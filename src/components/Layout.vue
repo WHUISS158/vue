@@ -49,7 +49,7 @@
     <div class="layout">
         <Row type="flex">
             <i-col span="3" class="layout-menu-left">
-                <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="hasSelect">
+                <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="productSelected">
                     <!--<div class="layout-logo-left"></div>-->
                     <Submenu name="1">
                         <template slot="title">
@@ -72,14 +72,15 @@
             </i-col>
             <i-col span="19">
                 <div class="layout-header">
-                    <Menu mode="horizontal" active-name="1" @on-select="horSelected">
+                    <Menu mode="horizontal" active-name="1" @on-select="horSelected" theme="dark">
                         <div class="layout-assistant">
-                            <Menu-item name="banner">Banner</Menu-item>
-                            <Menu-item name="zhiyou">直邮</Menu-item>
-                            <Menu-item name="guize">活动规则</Menu-item>
-                            <Menu-item name="goods">goods商品位</Menu-item>
-                            <Menu-item name="notGoods">非goods商品位</Menu-item>
-                            <Menu-item name="public">公共</Menu-item>
+                            <Menu-item v-for="tab in tabs" :name="tab">{{tab}}</Menu-item>
+                            <!--<Menu-item name="banner">Banner</Menu-item>
+                            <Menu-item name="mail">直邮</Menu-item>
+                            <Menu-item name="rule">活动规则</Menu-item>
+                            <Menu-item name="GoodsModules">goods商品位</Menu-item>
+                            <Menu-item name="NoneGoodsModules">非goods商品位</Menu-item>
+                            <Menu-item name="common">公共</Menu-item>-->
                         </div>
                     </Menu>
                 </div>
@@ -103,9 +104,14 @@ export default {
             isList: true
         }
     },
+    computed: {
+        tabs() {
+            return this.$store.state.tabs
+        }
+    },
     methods: {
-        hasSelect: function (name) {
-            console.log(name)
+        productSelected: function (name) {
+            this.$store.commit('productChange', name)
         },
         horSelected(name){
             this.$store.commit('tabChange', name)
