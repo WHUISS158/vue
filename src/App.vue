@@ -20,6 +20,8 @@ export default {
 
 html{
   width: 80%;
+  height: 900px;
+  overflow: hidden;
   margin: 0 auto;
 }
 #app {
@@ -27,6 +29,8 @@ html{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 900px;
+  overflow: auto;
   // width: 300px;
 }
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
@@ -50,6 +54,6 @@ html{
 {  
     border-radius: 3px;  
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
-    background-color: blue;  
+    background-color: #999;  
 }  
 </style>

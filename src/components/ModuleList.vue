@@ -16,12 +16,10 @@
                 <ModuleCube :module="module"></ModuleCube>
             </Col>
         </Row>
-        <ModuleDetail></ModuleDetail>
     </div>
 </template>
 
 <script>
-import ModuleDetail from './ModuleDetail'
 import ModuleCube from './ModuleCube'
 export default {
     name: 'modulelist',
@@ -29,7 +27,7 @@ export default {
     computed: {
         modules() { return this.$store.state.modulesList }
     },
-    components: { ModuleDetail, ModuleCube }
+    components: {  ModuleCube }
 }
 </script>
 

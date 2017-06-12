@@ -54,9 +54,9 @@
                 <div class="layout-logo-left">
                     <Search></Search>
                 </div>
-                <Menu active-name="1-2" width="auto" :open-names="['1']" @on-select="productSelected">
+                <Menu active-name="static-doc-formula" width="auto" :open-names="['doc']" @on-select="productSelected">
                     <!--<div class="layout-logo-left"></div>-->
-                    <Submenu name="1">
+                    <Submenu name="doc">
                         <template slot="title">
                             <Icon type="ios-navigate"></Icon>
                             模块开发规范
@@ -64,7 +64,7 @@
                         <Menu-item name="static-doc-formula">开发规范</Menu-item>
                         <Menu-item name="static-doc-use">使用方式</Menu-item>
                     </Submenu>
-                    <Submenu name="2">
+                    <Submenu name="moduleLibs">
                         <template slot="title">
                             <Icon type="ios-keypad"></Icon>
                             在线模块库
@@ -74,26 +74,29 @@
                 </Menu>
             </i-col>
             <i-col span="21">
-                <div class="layout-header">
-                    <Menu mode="horizontal" active-name="1" @on-select="horSelected">
+                <div class="layout-header" v-if="showHorTabs">
+                    <Menu mode="horizontal" :active-name="moduleTypes[0].english" @on-select="horSelected">
                         <div class="layout-assistant">
                             <Menu-item v-for="moduleType in moduleTypes" :name="moduleType.english">{{moduleType.chinese}}</Menu-item>
                         </div>
                     </Menu>
                 </div>
-                <div class="layout-content">
+                <div class="layout-content"  @click="bodyClick">
                     <div v-if="isList">
                         <ModuleList></ModuleList>
                     </div>
                     <div v-else>
-                        <DocUse></DocUse>
+                        <div v-if="docType == 'use'"><DocUse></DocUse></div>
+                        <div v-else><DocFormula></DocFormula></div>
                     </div>
                 </div>
             </i-col>
         </Row>
+        <ModuleDetail></ModuleDetail>
     </div>
 </template>
 <script>
+import ModuleDetail from './ModuleDetail'
 import ModuleList from './ModuleList'
 import Search from './Search'
 import DocFormula from './static/formula'
@@ -101,7 +104,9 @@ import DocUse from './static/use'
 export default {
     data: function () {
         return {
-            isList: true
+            isList: false,
+            docType: 'formula',
+            showHorTabs: false
         }
     },
     computed: {
@@ -121,23 +126,39 @@ export default {
                 products.push({ 'chinese': that.$store.state.config.products[product], 'english': product })
             })
             return products
+        },
+        showHorTabs() {
+            return this.$store.state.showHorTabs
         }
     },
     methods: {
         productSelected: function (name) {
             if (/static/.test(name)) {
                 this.isList = false
+                if(/use/.test(name)){
+                    this.docType = 'use'
+                }else{
+                    this.docType = 'formula'
+                }
+                this.showHorTabs = false
             } else {
                 this.isList = true
                 this.$store.commit('productChange', name)
+                this.showHorTabs = true
             }
         },
         horSelected(name) {
             this.$store.commit('moduleTypeChange', name)
+        },
+        bodyClick() {
+            this.$store.commit('hideSearchResult')
         }
     },
+    mounted() {
+        // debugger
+    },
     components: {
-        ModuleList, Search, DocFormula, DocUse
+        ModuleDetail, ModuleList, Search, DocFormula, DocUse
     }
 }
 </script> 

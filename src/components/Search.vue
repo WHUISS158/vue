@@ -2,7 +2,7 @@
     <div>
         <Input placeholder="输入关键字搜索" v-model="value" @on-change="filter">
         </Input>
-        <SearchList v-model="allModules" :results="list"></SearchList>
+        <SearchList v-if="showSearchResult" v-model="allModules" :results="list"></SearchList>
     </div>
 </template>
 
@@ -18,15 +18,18 @@ export default {
     computed: {
         allModules() {
             return this.$store.state.modules
+        },
+        showSearchResult() {
+            return this.$store.state.showSearchResult
         }
     },
     methods: {
         filter() {
+            this.$store.state.showSearchResult = true
             let regex = new RegExp(this.value, 'i')
             let results = !!this.value ? this.allModules.filter((module) => {
                 return regex.test(module.keywords)
             }) : []
-            console.log(this.allModules.length,results.length)
             this.list = results
         }
     },

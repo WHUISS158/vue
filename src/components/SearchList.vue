@@ -36,6 +36,7 @@ export default {
 }
 .img-fix{
     display: block;
+    margin: 0 auto;
     height: 55px;
     max-width: 95%;
     padding-top: 3px;

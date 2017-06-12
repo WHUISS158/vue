@@ -20,20 +20,15 @@
 <template>
     <Modal :value="showDetail" @on-ok="ok" @on-cancel="cancel" class-name="modal-vertical-center" :title="moduleDetail.value" width="800">
         <div>
-            <Carousel>
-                <Carousel-item>
-                    <p>模块名 : {{moduleDetail.value}}</p>
-                    <p>预览图 : </p>
-                    <img :src="moduleDetail.zoom" class="img-fix">
-                    <p>支持PC : {{moduleDetail.suitWeb ? '是' : '否'}}</p>
-                    <p>支持移动端 : {{moduleDetail.suitH5 ? '是' : '否'}}</p>
-                </Carousel-item>
-                <Carousel-item>
-                    <span>应用方式: </span>
-                    <pre>{{moduleDetail.tpl}}</pre>
-                </Carousel-item>
+            <p>模块名 : {{moduleDetail.value}}</p>
+            <p>预览图 : </p>
+            <img :src="moduleDetail.zoom" class="img-fix">
+            <p>支持PC : {{moduleDetail.suitWeb ? '是' : '否'}}</p>
+            <p>支持移动端 : {{moduleDetail.suitH5 ? '是' : '否'}}</p>
     
-            </Carousel>
+            <span>应用方式: </span>
+            <pre>{{moduleDetail.tpl}}</pre>
+    
         </div>
     
     </Modal>

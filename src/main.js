@@ -31,7 +31,9 @@ const store = new Vuex.Store({
         currentProduct: '',
         moduleTypes: [],
         currentModuleTypes: [],
-        config: config
+        config: config,
+        showSearchResult: false,
+        showHorTabs : false
     },
     getters: {
         moduleDetail: state => {
@@ -53,6 +55,7 @@ const store = new Vuex.Store({
          * 水平tab切换 即moduleType的变化
          */
         'moduleTypeChange': (state, curModuleType) => {
+            state.showSearchResult = false
             state.currentModuleType = curModuleType
             state.modulesList = state.modules.filter((module) => {
                 return module.product == state.currentProduct && module.moduleType == curModuleType
@@ -63,6 +66,7 @@ const store = new Vuex.Store({
          * 即不同产品的切换
          */
         'productChange': (state, curProduct) => {
+            state.showSearchResult = false
             state.currentProduct = curProduct
             state.currentModuleTypes = state.moduleTypes[curProduct]
             state.modulesList = state.modules.filter((module) => {
@@ -90,6 +94,9 @@ const store = new Vuex.Store({
         },
         'closeModal': (state) => {
             state.showDetail = false
+        },
+        'hideSearchResult': (state) => {
+            state.showSearchResult = false
         }
     }
 })
