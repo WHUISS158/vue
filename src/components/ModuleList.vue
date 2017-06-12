@@ -12,10 +12,11 @@
 <template>
     <div>
         <Row :gutter="16">
-            <Col span="6" v-for="module in modules" :key="module" class="row-style">
-                <ModuleCube :module="module"></ModuleCube>
+            <Col span="6" v-for="module in currentModules" :key="module" class="row-style">
+            <ModuleCube :module="module"></ModuleCube>
             </Col>
         </Row>
+        <Page :page-size="8" :total="total" :show-total="true" :current="currentPage" @on-change="pageChange"></Page>
     </div>
 </template>
 
@@ -25,9 +26,17 @@ export default {
     name: 'modulelist',
     props: [],
     computed: {
-        modules() { return this.$store.state.modulesList }
+        modules() { return this.$store.state.modulesList },
+        currentModules() { return this.modules.slice((this.currentPage - 1) * 8, this.currentPage * 8)},
+        total() { return this.modules.length },
+        currentPage() { return this.$store.state.currentPage}
     },
-    components: {  ModuleCube }
+    methods: {
+        pageChange(pageNum) {
+            this.$store.commit('pageChange', pageNum)
+        }
+    },
+    components: { ModuleCube }
 }
 </script>
 

@@ -33,7 +33,8 @@ const store = new Vuex.Store({
         currentModuleTypes: [],
         config: config,
         showSearchResult: false,
-        showHorTabs : false
+        showHorTabs : false,
+        currentPage: 1
     },
     getters: {
         moduleDetail: state => {
@@ -97,6 +98,9 @@ const store = new Vuex.Store({
         },
         'hideSearchResult': (state) => {
             state.showSearchResult = false
+        },
+        'pageChange': (state, currentPage) => {
+            state.currentPage = currentPage
         }
     }
 })

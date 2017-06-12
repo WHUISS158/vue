@@ -149,6 +149,7 @@ export default {
         },
         horSelected(name) {
             this.$store.commit('moduleTypeChange', name)
+            this.$store.commit('pageChange', 1)
         },
         bodyClick() {
             this.$store.commit('hideSearchResult')
