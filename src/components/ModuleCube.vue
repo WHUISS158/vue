@@ -15,6 +15,18 @@
     align-content: center;
     align-items: center;
 }
+
+.list::after {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    background: black;
+}
+
+.list:hover::after {
+    opacity: 0.5;
+}
 </style>
 <template>
     <a class="list" @click="listClick">

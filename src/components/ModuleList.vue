@@ -8,6 +8,11 @@
 .row-style {
     margin-bottom: 10px
 }
+
+.page-center{
+    width: 150px;
+    margin: 50px auto;
+}
 </style>
 <template>
     <div>
@@ -16,7 +21,7 @@
             <ModuleCube :module="module"></ModuleCube>
             </Col>
         </Row>
-        <Page :page-size="8" :total="total" :show-total="true" :current="currentPage" @on-change="pageChange"></Page>
+        <Page :page-size="8" :total="total" simple :current="currentPage" @on-change="pageChange" class-name="page-center"></Page>
     </div>
 </template>
 

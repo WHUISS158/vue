@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Layout from './components/Layout'
+import Layout from './components/Layout/Layout'
 
 export default {
   name: 'app',
@@ -16,13 +16,13 @@ export default {
 </script>
 
 <style lang="less">
-@import './index.less';
+// @import './index.less';
 
-html{
-  width: 80%;
-  height: 900px;
+html, body{
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -30,7 +30,7 @@ html{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 900px;
-  overflow: auto;
+  position: relative;
   // width: 300px;
 }
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  

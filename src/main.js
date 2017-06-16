@@ -11,6 +11,7 @@ import Vuex from 'vuex'
 import _ from 'lodash'
 import axios from 'axios'
 import config from './config/config'
+import 'font-awesome-webpack'
 
 
 Vue.config.productionTip = false
@@ -25,7 +26,7 @@ const store = new Vuex.Store({
         modules: [],
         products: [],
         modulesList: null,
-        showDetail: false,
+        showModal: false,
         currentModule: '',
         moduleDetail: {},
         currentProduct: '',
@@ -34,7 +35,8 @@ const store = new Vuex.Store({
         config: config,
         showSearchResult: false,
         showHorTabs : false,
-        currentPage: 1
+        currentPage: 1,
+        tempData: {}
     },
     getters: {
         moduleDetail: state => {
@@ -86,21 +88,26 @@ const store = new Vuex.Store({
             state.moduleDetail = result.length > 0 ? result[0] : {}
             state.showDetail = true
         },
-        'moduleClick': (state, moduleId) => {
+        'showModal': (state, moduleId) => {
             // debugger
-            state.moduleDetail = state.modules.filter( module => {
-                return new RegExp(moduleId, 'i').test(module.type)
-            })[0]
-            state.showDetail = true
+            // state.moduleDetail = state.modules.filter( module => {
+            //     return new RegExp(moduleId, 'i').test(module.type)
+            // })[0]
+            state.showModal = true
         },
         'closeModal': (state) => {
-            state.showDetail = false
+            state.showModal = false
         },
         'hideSearchResult': (state) => {
             state.showSearchResult = false
         },
         'pageChange': (state, currentPage) => {
             state.currentPage = currentPage
+        },
+        'updateTempData': (state, data) => {
+            for(let key in data){
+                state.tempData[key] = data[key]
+            }
         }
     }
 })

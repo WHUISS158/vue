@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .md {
     width: 70%;
     margin: 0 auto;
