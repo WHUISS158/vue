@@ -24,6 +24,9 @@ html, body{
   padding: 0;
   background: #f4f4f4;
 }
+blockquote, pre {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

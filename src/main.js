@@ -11,7 +11,7 @@ import Vuex from 'vuex'
 import _ from 'lodash'
 import axios from 'axios'
 import config from './config/config'
-import 'font-awesome-webpack'
+// import 'font-awesome-webpack'
 
 
 Vue.config.productionTip = false

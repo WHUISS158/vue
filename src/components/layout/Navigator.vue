@@ -1,6 +1,7 @@
 <template>
   <div>
     <Menu></Menu>
+    <div class="m-search"></div>
   </div>
 </template>
 
@@ -14,5 +15,7 @@ export default {
 </script>
 
 <style scoped>
-
+.m-search {
+  
+}
 </style>

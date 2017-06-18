@@ -1,5 +1,5 @@
 <template> 
-    <input type="text" class="u-input" @input="inputChange">
+    <input type="text" class="u-input" @input="inputChange" placeholder="输入关键字进行搜索">
 </template>
 
 <script>

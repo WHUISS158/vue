@@ -17,24 +17,20 @@
                 <p>模块配置项："筛选模块(适配pc端)", "请先设置需要的制造商数量makerNumber,再填写goodsId", "ps：请保证制造商设置数量和制造商的图片地址数量一致,图片地址为空默认不显示", "goodsId：goods系统的接口id字段(请问后台君要~)", "needScenePicUrl: jpg场景图与png图切换", "itemsOnPage: 默认45个,表示一页展现的商品数量", "topic:该字段用于人气排序,请在pub中创建一个投票将设置的topic的值写入这个字段", "qrcodeLink:二维码的链接", "qrcodeBg: 二维码的背景图", "maxPrice: 设置筛选的最大价格(请设置>=这一批商品的最贵的那一个商品的价格)", "makerNumber: 设置显示制造商的数量", "hotMakerImg: 每个制造商的图片地址"</p>
                 <p>使用方式：</p>
                 <blockquote>
-                    <pre>
-                        <code>
-                         &ltNModule&gt
-                             &ltName&gtYX_N_M_0505&lt/Name&gt
-                             &ltData&gt&lt/Data&gt
-                         &lt/NModule&gt
-                        </code>
-                    </pre>
+                    <span>
+                        &ltNModule&gt 
+                            <br>&ltName&gtYX_N_M_0505&lt/Name&gt &ltData&gt&lt/Data&gt &lt/NModule&gt
+                    </span>
                 </blockquote>
                 <p>配置数据：</p>
                 <blockquote>
                     <pre>
-                        <code>
-                            {
-                                name: 'aaa'
-                            }
-                        </code>
-                    </pre>
+                            <code>
+                                {
+                                    name: 'aaa'
+                                }
+                            </code>
+                        </pre>
                 </blockquote>
             </div>
             <div class="footer"></div>
@@ -114,6 +110,7 @@ export default {
     transform: rotate(45deg);
     cursor: pointer;
 }
+
 .close::before {
     content: '';
     width: 15%;
@@ -124,6 +121,7 @@ export default {
     border-right: 1px solid black;
     border-bottom: 1px solid black;
 }
+
 .close::after {
     content: '';
     width: 15%;
